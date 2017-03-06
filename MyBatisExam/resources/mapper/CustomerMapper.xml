@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="resources.CustomerMapper">
+
+	<insert id="insertCustomer" parameterType="Customer">
+		INSERT INTO customer (id, name, age)
+		VALUES (#{id}, #{name}, #{age})
+	</insert>
+
+	<select id="selectAll" resultType="Customer">		<!-- 전부 검색하는데 리턴타입이 Customer가 된다.(리스트의 경우에도 반환하는건 제너럴의 타입으로 -->
+		SELECT id, name, age FROM customer
+	</select>
+
+	<update id="updateCustomer" parameterType="Customer">
+		UPDATE customer
+		SET
+		name=#{name}, age=#{age}
+		WHERE id=#{id}
+	</update>
+
+	<delete id="deleteCustomer" parameterType="int">
+		DELETE FROM customer
+		where id=#{CustomerId}
+	</delete>
+
+	<select id="selectById" resultType="Customer" parameterType="int">
+		SELECT id, name, age
+		FROM customer
+		where id=#{ID}
+	</select>
+
+</mapper>

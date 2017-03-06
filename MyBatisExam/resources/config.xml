@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+  <configuration>
+ 
+ <typeAliases>		<!-- 내 쿼리를 Mybatis에서 해주므로  -->
+ 	<typeAlias type="domain.Customer" alias="Customer"/>	<!-- alias는 typeAlias의 별명임 -->
+ </typeAliases>
+  
+  <environments default="development">			<!-- enviroments -> 환경이 여러개 들어갈수 있음  default는 id가 development인 환경으로 설정했음-->
+  	<environment id="development">		<!--  환경의 Default는 이 환경으로(enviroment) -->
+  		
+  		<transactionManager type="JDBC" />
+  		
+  		<dataSource type="POOLED">		<!--  dataSource 타입은 pooled로 할거임 -->
+  			<property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+  			<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+  			<property name="username" value="scott"/>
+  			<property name="password" value="tiger"/>
+  		</dataSource>
+  		
+  	</environment>
+  </environments>
+
+	<mappers>
+		<mapper resource="mapper/CustomerMapper.xml"/>	
+	</mappers>
+  
+  </configuration>
+  
+  <!--  dtd설정  -->
